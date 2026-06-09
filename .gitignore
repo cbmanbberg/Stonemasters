@@ -1,2 +1,4 @@
 .claude/
 *.bak
+rtc-src/node_modules/
+rtc-dist/
