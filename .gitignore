@@ -2,3 +2,5 @@
 *.bak
 rtc-src/node_modules/
 rtc-dist/
+btc/node_modules/
+btc/dist/
