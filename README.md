@@ -2,7 +2,7 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 1.8.0**
+**Aktuelle Version: 1.8.1**
 
 ## Module
 
