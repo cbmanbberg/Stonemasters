@@ -2,7 +2,7 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 1.7.0**
+**Aktuelle Version: 1.8.0**
 
 ## Module
 
@@ -50,6 +50,10 @@ Die Töne sind so gebaut, dass man am Board hängen kann, ohne aufs Display zu s
 | Aufsteigende Tonfolge | Alle Sätze geschafft |
 
 Pitch-Logik: hoch = hängen/anstrengen, tief = loslassen/erholen.
+
+## Cloud Sync
+
+Optionaler Sync über Supabase (E-Mail + Passwort). Daten liegen primär in `localStorage` (`sm_v4`); bei aktivem Konto wird der komplette Stand als JSON-Blob gesichert (Last-Write-Wins, `updated_at`-Vergleich). Pull beim App-Start und bei jedem Wechsel in den Vordergrund (`visibilitychange`); Upload debounced 1,5 s nach jeder Änderung, mit Token-Refresh-Retry. Netzwerkfehler loggen nicht aus. Beim ersten App-Start erscheint ein Onboarding mit Erklärung der Module und des Syncs.
 
 ## Deployment
 
