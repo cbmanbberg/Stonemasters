@@ -10,7 +10,7 @@ Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, F
 |---|---|
 | **TRAIN** | Dashboard (Periodisierungs-Block, letzte Session, Schnellstart-Presets) + Workout-Generator (Kraft / Ausdauer / Power) mit Timern, RPE-Erfassung und Post-Workout-Flexibility-Prompt |
 | **FINGER** | Fingertraining-Protokolle (Max Hangs, Repeater 7/3 & 6/4, Density, Abrahangs, Critical-Force-Test) mit Griffauswahl, akustischer Führung und PB-Tracking |
-| **FLEX** | Flexibility-Sessions: Dauer (10–60 Min), Fokus (Unterkörper / Oberkörper / Klettern / Ausgewogen / Frei), Intensität (Sanft 35s / Mittel 50s / Tief 75s). 27 Übungen, zeitbudget-basierte Generierung, Reihenfolge stehend → sitzend → liegend mit Antagonisten-Wechsel |
+| **FLEX** | Flexibility-Sessions: Dauer (10–60 Min), Fokus (Unterkörper / Oberkörper / Klettern / Ausgewogen / Frei), Intensität (Sanft 35s / Mittel 50s / Tief 75s). 43 Übungen (klassische Yoga-Posen für den ganzen Körper), zeitbudget-basierte Generierung mit Zufallsauswahl aus großen Pools, Reihenfolge stehend → sitzend → liegend mit Antagonisten-Wechsel |
 | **LOG** | Trainingstagebuch mit Kalender, manuellen Einträgen und RPE-Färbung |
 | **PROFIL** | Profile, Einstellungen, App-Info |
 
