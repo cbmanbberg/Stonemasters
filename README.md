@@ -2,7 +2,7 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 2.2.0**
+**Aktuelle Version: 2.3.0**
 
 ## Module
 
@@ -68,6 +68,15 @@ Sicherung über **PROFIL → BACKUP**:
 - **Importieren** prüft die Datei, zeigt Stand und Anzahl der Einträge und ersetzt nach Bestätigung die lokalen Daten.
 - Der BACKUP-Button wird farbig, wenn das letzte Backup älter als 30 Tage ist.
 - Schlägt das Speichern fehl (z. B. Speicher voll), erscheint ein roter Hinweis mit direktem Link zum Backup. Der Fehlerbildschirm bietet „Neu laden" und „Backup herunterladen" an; Löschen aller Daten nur nach Rückfrage.
+
+## Strava-Import
+
+Nur lesend (Scope `activity:read_all`), direkt aus dem Browser ohne Server:
+- **Einrichten:** PROFIL → Strava → Client ID + Client Secret (strava.com/settings/api, Callback Domain `cbmanbberg.github.io`) → „MIT STRAVA VERBINDEN“.
+- **Erster Import:** letzte 3 Monate. Danach automatisch beim Öffnen bzw. Zurückkehren in die App (höchstens alle 15 Min) plus Button „Jetzt synchronisieren“. Es werden nur Aktivitäten ab dem letzten Sync (mit 7 Tagen Überlappung) geladen und dedupliziert.
+- **Status** im Strava-Tab: Anzahl importierter Aktivitäten, letzter Sync, neue Aktivitäten, verständliche Fehlermeldungen (abgelehnte Freigabe, fehlende Aktivitäten-Berechtigung, falsches Secret, abgelaufener Code, Limit).
+- **iPhone-Home-Bildschirm-App:** Leitet Strava in Safari statt in die App zurück, zeigt die Seite den Code an; er lässt sich im Strava-Tab unter „Code manuell einlösen“ einfügen.
+- Aktivitäten liegen in `sm_str_acts` und erscheinen im LOG mit eigenem Typ (Klettern, Laufen, Radfahren, Schwimmen, Wandern, Cardio).
 
 ## Deployment
 
