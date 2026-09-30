@@ -2,7 +2,7 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 2.0.0**
+**Aktuelle Version: 2.1.0**
 
 ## Module
 
@@ -12,7 +12,7 @@ Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, F
 | **FINGER** | Fingertraining-Protokolle (Max Hangs, Repeater 7/3 & 6/4, Density, Abrahangs, Critical-Force-Test) mit Griffauswahl, akustischer Führung und PB-Tracking |
 | **FLEX** | Flexibility-Sessions: Dauer (10–60 Min), Fokus (Unterkörper / Oberkörper / Klettern / Ganzkörper), Intensität (Sanft 35s / Mittel 50s / Tief 75s). 43 Übungen (klassische Yoga-Posen für den ganzen Körper), zeitbudget-basierte Generierung mit Zufallsauswahl aus großen Pools, Reihenfolge stehend → sitzend → liegend mit Antagonisten-Wechsel |
 | **LOG** | Trainingstagebuch mit Kalender, manuellen Einträgen, RPE-Färbung und Strava-Import |
-| **PROFIL** | Profile, Einstellungen, App-Info, Strava-Verbindung |
+| **PROFIL** | Profile, Einstellungen, App-Info, Strava-Verbindung, Daten-Backup (Export/Import) |
 
 ## Struktur
 
@@ -51,9 +51,15 @@ Die Töne sind so gebaut, dass man am Board hängen kann, ohne aufs Display zu s
 
 Pitch-Logik: hoch = hängen/anstrengen, tief = loslassen/erholen.
 
-## Cloud Sync
+## Daten & Backup
 
-Optionaler Sync über Supabase (E-Mail + Passwort). Daten liegen primär in `localStorage` (`sm_v4`); bei aktivem Konto wird der komplette Stand als JSON-Blob gesichert (Last-Write-Wins, `updated_at`-Vergleich). Pull beim App-Start und bei jedem Wechsel in den Vordergrund (`visibilitychange`); Upload debounced 1,5 s nach jeder Änderung, mit Token-Refresh-Retry. Netzwerkfehler loggen nicht aus. Beim ersten App-Start erscheint ein Onboarding mit Erklärung der Module und des Syncs.
+Alle Daten liegen ausschließlich lokal im Browser (`localStorage`, Hauptschlüssel `sm_v4`) — kein Konto, kein Server. Beim Start fordert die App dauerhaften Speicher an (`navigator.storage.persist()`), damit der Browser die Daten nicht bei Speichermangel löscht.
+
+Sicherung über **PROFIL → BACKUP**:
+- **Exportieren** erzeugt `stonemasters-backup-JJJJ-MM-TT.json` mit allen `sm_*`-Schlüsseln (auf dem Handy über das Teilen-Menü, z. B. nach iCloud Drive/Dateien). Strava-Tokens und Client Secret werden nicht exportiert.
+- **Importieren** prüft die Datei, zeigt Stand und Anzahl der Einträge und ersetzt nach Bestätigung die lokalen Daten.
+- Der BACKUP-Button wird farbig, wenn das letzte Backup älter als 30 Tage ist.
+- Schlägt das Speichern fehl (z. B. Speicher voll), erscheint ein roter Hinweis mit direktem Link zum Backup. Der Fehlerbildschirm bietet „Neu laden" und „Backup herunterladen" an; Löschen aller Daten nur nach Rückfrage.
 
 ## Deployment
 
