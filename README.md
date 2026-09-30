@@ -2,17 +2,17 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 2.1.0**
+**Aktuelle Version: 2.2.0**
 
 ## Module
 
 | Tab | Funktion |
 |---|---|
 | **TRAIN** | Dashboard (Periodisierungs-Block, letzte Session, Schnellstart-Presets) + Workout-Generator (Kraft / Ausdauer / Power) mit Timern, RPE-Erfassung und Post-Workout-Flexibility-Prompt |
-| **FINGER** | Fingertraining-Protokolle (Max Hangs, Repeater 7/3 & 6/4, Density, Abrahangs, Critical-Force-Test) mit Griffauswahl, akustischer Führung und PB-Tracking |
+| **FINGER** | Fingertraining-Protokolle (Max Hangs, Repeater 7/3 & 6/4, Leichte Hänge 10/50, Abrahangs, Critical-Force-Test) mit Griffauswahl, 10-Sek-Vorlauf, akustischer Führung und Max-Hang-PBs pro Griff. Vor Max Hangs und CF-Test muss das Aufwärmen bestätigt werden |
 | **FLEX** | Flexibility-Sessions: Dauer (10–60 Min), Fokus (Unterkörper / Oberkörper / Klettern / Ganzkörper), Intensität (Sanft 35s / Mittel 50s / Tief 75s). 43 Übungen (klassische Yoga-Posen für den ganzen Körper), zeitbudget-basierte Generierung mit Zufallsauswahl aus großen Pools, Reihenfolge stehend → sitzend → liegend mit Antagonisten-Wechsel |
 | **LOG** | Trainingstagebuch mit Kalender, manuellen Einträgen, RPE-Färbung und Strava-Import |
-| **PROFIL** | Profile, Einstellungen, App-Info, Strava-Verbindung, Daten-Backup (Export/Import) |
+| **PROFIL** | Monatsbericht, Badges, Leistungstest, Bestleistungen (PBs bearbeiten/löschen, Seitenvergleich-Notizen), Gewicht, Setup, Strava, Daten-Backup (Export/Import) |
 
 ## Struktur
 
@@ -26,6 +26,14 @@ backups/          — Versions-Backups (z.B. index-v1.2.0.html)
 ```
 
 **Hinweis:** Es gibt kein separates Quellverzeichnis — `index.html` enthält das fertige Bundle und wird direkt editiert. Frühere Versionen liegen in `backups/` und in der Git-Historie.
+
+## Trainingslogik
+
+- **Periodisierung:** 4-Wochen-Zyklus (Volumen → Intensität → Kraftausdauer → Deload). Jede Kalenderwoche mit mindestens einer Einheit zählt (TRAIN, Fingerboard, Klettern/Boards im LOG — nicht Flex/Cardio); die laufende Woche zählt sofort. Nach 2+ Wochen ohne Training beginnt ein neuer Block.
+- **48-h-Fingerregel:** Liegt die letzte harte Fingereinheit (Max Hang, Repeater, CF-Test oder der Fingerblock einer TRAIN-Session) weniger als 48 h zurück, ersetzt der Generator den Fingerblock durch ein leichtes Programm. Abrahangs und leichte Hänge zählen nicht als hart.
+- **Critical Force:** Eine Definition — geführter Test im FINGER-Tab (18× 6/4 Sek). Nur wenn alle 18 Wdh geschafft wurden, zählt die Last als CF (`pbs.cf_kg`).
+- **Lifting Edge Max Pull:** einarmiges 1RM aus dem Leistungstest; steuert die Trainingslasten. Fingerboard-Sessions verändern diesen Wert nicht.
+- **Satzpausen** im Workout werden aus der Vorgabe gelesen („3–5 Min“ → 5:00 Timer).
 
 ## Flexibility-Modul (fachliche Grundlage)
 
