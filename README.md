@@ -2,7 +2,7 @@
 
 Klettertraining-App als Progressive Web App (PWA) — Kraft, Finger, Ausdauer, Flexibility und Trainingstagebuch in einer einzigen Datei.
 
-**Aktuelle Version: 2.3.1**
+**Aktuelle Version: 2.3.2**
 
 ## Module
 
@@ -30,10 +30,11 @@ backups/          — Versions-Backups (z.B. index-v1.2.0.html)
 ## Trainingslogik
 
 - **Periodisierung:** 4-Wochen-Zyklus (Volumen → Intensität → Kraftausdauer → Deload). Jede Kalenderwoche mit mindestens einer Einheit zählt (TRAIN, Fingerboard, Klettern/Boards im LOG — nicht Flex/Cardio); die laufende Woche zählt sofort. Nach 2+ Wochen ohne Training beginnt ein neuer Block.
-- **48-h-Fingerregel:** Liegt die letzte harte Fingereinheit (Max Hang, Repeater, CF-Test oder der Fingerblock einer TRAIN-Session) weniger als 48 h zurück, ersetzt der Generator den Fingerblock durch ein leichtes Programm. Abrahangs und leichte Hänge zählen nicht als hart.
+- **48-h-Fingerregel:** Liegt die letzte harte Fingereinheit (Max Hang, Repeater, CF-Test oder der Fingerblock einer TRAIN-Session) weniger als 48 h zurück, ersetzt der Generator den Fingerblock durch ein leichtes Programm. Abrahangs und leichte Hänge zählen nicht als hart, auch nicht der leichte Fingerblock der Woche 1 im TRAIN-Tab.
 - **Critical Force:** Eine Definition — geführter Test im FINGER-Tab (18× 6/4 Sek). Nur wenn alle 18 Wdh geschafft wurden, zählt die Last als CF-Testwert (`pbs.cf_kg`). Der Wert ist eine Näherung ohne Kraftsensor und liegt über der echten CF nach Giles et al. 2019; er dient als Verlaufswert.
 - **Zeitbudget:** Der Hauptblock enthält nur so viele Übungen, wie mit Sätzen und Pausen in die gewählte Dauer passen (mindestens 2: eine Zug- und eine Druckübung).
 - **Aufwärmen:** Übungen ohne passendes Gerät im Setup entfallen.
+- **Leistungsniveau:** Lasten und Übungsauswahl richten sich nach dem Leistungstest. Latzug aus Körpergewicht und Klimmzugzahl, Kettlebell- und Kurzhantel-Lasten aus Bankdrück- und Kniebeuge-1RM (auf die eingetragenen Gewichte gerundet), Dips nach Dips-Test. Schwere Übungen erst ab Mindestniveau: Explosive Klimmzüge und Toes-to-Bar ab 8 Klimmzügen, Campus ab 10, Dragon Flag ab 12, Dips mit Zusatzgewicht ab 12 Dips, Archer Liegestütze ab 20 Liegestützen. Unter 4 Klimmzügen Hinweis auf Band oder Negative, ab 12 im Kraft-Fokus Zusatzgewicht.
 - **Lifting Edge Max Pull:** einarmiges 1RM aus dem Leistungstest; steuert die Trainingslasten. Fingerboard-Sessions verändern diesen Wert nicht.
 - **Satzpausen** im Workout werden aus der Vorgabe gelesen („3–5 Min“ → 5:00 Timer).
 
@@ -45,6 +46,7 @@ backups/          — Versions-Backups (z.B. index-v1.2.0.html)
 - Innerhalb jeder Kategorie wechseln Muskelgruppen/Antagonisten ab
 - Beidseitige Übungen: automatischer Start der zweiten Seite nach 5-s-Countdown
 - Übungen mit hoher Anforderung haben eine einfachere Alternative als Dropdown
+- Intensität Sanft lässt die anspruchsvollsten Positionen weg und zeigt die einfachere Version direkt an; kraftbetonte Haltepositionen sind in jeder Stufe auf 45 s begrenzt
 
 ## Fingerboard-Akustik
 
